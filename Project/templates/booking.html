@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Booking{% endblock %}
+
+{% block content %}
+
+<form method = "POST">
+    <h3 align = "center">Booking</h3>
+    
+    <div class = "form-group">
+        <label for = "tickets">Tickets</label>
+        <input type = "number" class = "form-control" id = "tickets" name = "tickets" placeholder="Enter number of tickets" value=0/>
+    </div>
+    <div class = "form-group">
+        <label for = "available">Available seats</label>
+        <h5>{{venue.capacity}}</h5>
+    </div>
+    <div class = "form-group">
+        <label for = "price">Price</label>
+        <h5>{{show.price}}</h5>
+    </div>
+    
+    <br />
+    <button type = "submit" class ="btn btn-primary">Confirm Booking</button>
+</form>
+
+{% endblock %}

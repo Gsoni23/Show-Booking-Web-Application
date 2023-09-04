@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Admin dashboard{% endblock %}
+
+{% block content %}
+<h1 align="center">Venues</h1>
+<ul class="list-group list-group-flush" id="">
+    {% for venue in user.venues %}
+    <li class="list-group-item">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{venue.venue_name}} | {{venue.place}} | {{venue.capacity}}</h5>
+            
+                {% for show in venue.shows %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+
+                        <h5 class="card-title">{{show.show_name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{show.tags}}</h6>
+                        <p class="card-text">{{show.price}}</p>
+                        <div align="center">
+                            <a href='{{ url_for('views.edit_show')}}?id={{show.id}}'>
+                                <button type="submit" class="btn btn-warning">Action</button>
+                            </a>
+                            
+                            <a href='{{ url_for('views.delete_show')}}?id={{show.id}}'>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </a>
+                        </div>
+                    </div>
+                </div> 
+                </br>   
+                {% endfor %}
+
+                </br>
+                <div  align = "center">
+                    <a href='{{ url_for('views.edit_venue')}}?id={{venue.id}}'>
+                        <button type="submit" class="btn btn-warning">Edit</button>
+                    <a href='{{ url_for('views.show')}}?id={{venue.id}}'>
+                        <button type="submit" class="btn btn-primary">Add Shows</button>
+                    </a>
+                    <a href='{{ url_for('views.delete_venue')}}?id={{venue.id}}'>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </li>
+    {% endfor %}
+</ul>
+<br>
+<div align="center">
+    <a href='{{ url_for('views.venue')}}'>
+        <button type="submit" class="btn btn-primary">Add Venue</button>
+    </a>
+</div>
+{% endblock %}

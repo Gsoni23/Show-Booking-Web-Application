@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}User dashboard{% endblock %}
+
+{% block content %}
+<h1 align="center">Shows</h1>
+    <form  class = "form-group row" align = "center" method="POST">
+    <input type="text" name="show_name" placeholder="Search movies by name...">
+    <input type="text" name="tags" placeholder="Tags...">
+    <input type="number" name="rating" min="0" max="5" step="1" placeholder="Rating...">
+    <button class = "btn btn-primary" type="submit">Search</button>
+    </form>
+    <br>
+    {% if results %}
+      <h2>Results</h2>
+      <ul class = "list-group-item">
+        {% for result in results %}
+          <li>{{ result.show_name }} - {{ result.tags }} - {{ result.rating }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+<ul class="list-group list-group-flush" id="">
+    {% for user in users %}
+    {% if user.isadmin %}
+    {% for venue in user.venues %}
+    <li class="list-group-item">
+        <h3 align = "center">{{venue.venue_name}}</h3>
+        {% for show in venue.shows %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{show.show_name}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{show.tags}} | {{show.price}}</h6>
+              <p class="card-text"> Time: {{show.start_time}}</p>
+              <div align="center">
+                <a href='{{ url_for('views.booking')}}?show_id={{show.id}}&venue_id={{venue.id}}'>
+                    <button type="submit" class="btn btn-primary">Book</button>
+                </a>
+            </div>
+            </div>
+        </div>
+        </br>
+        {% endfor %}
+    </li>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Shows Management{% endblock %}
+
+{% block content %}
+{% if editing %}
+    <form method = "POST">
+        <h3 align = "center">Editing show</h3>
+        <div class = "form-group">
+            <label for = "show_name">Show Name</label>
+            <input type = "text" class = "form-control" id = "show_name" name = "show_name" value="{{show.show_name}}"/>
+        </div>
+        <div class = "form-group">
+            <label for = "rating">Rating</label>
+            <input type = "number" class = "form-control" id = "rating" name = "rating" value="{{show.rating}}"/>
+        </div>
+        <div class = "form-group">
+            <label for = "start_time">Start Time</label>
+            <input type="time" id="start_time" name="start_time" value="{{show.start_time}}">
+        </div>
+        <div class = "form-group">
+            <label for = "end_time">End Time</label>
+            <input type="time" id="end_time" name="end_time" value="{{show.end_time}}">
+        </div>
+        <div class = "form-group">
+            <label for = "tags">Tags</label>
+            <input type = "text" class = "form-control" id = "tags" name = "tags" value="{{show.tags}}"/>
+        </div>
+        <div class = "form-group">
+            <label for = "price">Price</label>
+            <input type = "number" class = "form-control" id = "price" name = "price" value="{{show.price}}"/>
+        </div>
+
+        <br />
+        <button type = "submit" class ="btn btn-primary">Submit</button>
+        
+
+    </form>
+{% else %}
+    <form method = "POST">
+        <h3 align = "center">Creating a new show</h3>
+        <div class = "form-group">
+            <label for = "show_name">Show Name</label>
+            <input type = "text" class = "form-control" id = "show_name" name = "show_name" placeholder="Enter show name"/>
+        </div>
+        <div class = "form-group">
+            <label for = "rating">Rating</label>
+            <input type = "number" class = "form-control" id = "rating" name = "rating" placeholder="Ratings"/>
+        </div>
+        <div class = "form-group">
+            <label for = "start_time">Start Time</label>
+            <input type="time" id="start_time" name="start_time">
+        </div>
+        <div class = "form-group">
+            <label for = "end_time">End Time</label>
+            <input type="time" id="end_time" name="end_time">
+        </div>
+        <div class = "form-group">
+            <label for = "tags">Tags</label>
+            <input type = "text" class = "form-control" id = "tags" name = "tags" placeholder="Enter tags"/>
+        </div>
+        <div class = "form-group">
+            <label for = "price">Price</label>
+            <input type = "number" class = "form-control" id = "price" name = "price" placeholder="Enter price of ticket"/>
+        </div>
+
+        <br />
+        <button type = "submit" class ="btn btn-primary">Submit</button>
+    </form>
+{% endif %}    
+{% endblock %}

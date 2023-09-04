@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Bookings{% endblock %}
+
+{% block content %}
+<h1 align="center">Bookings</h1>
+<ul class="list-group list-group-flush">
+
+    {% for show in shows %}
+    <li class="list-group-item">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{show.show_name}} | {{show.tickets}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{show.start_time}} | {{show.end_time}}</h6>
+              
+            </div>
+        </div>
+        </br>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,11 @@
+Steps to start the website
+1. Install all the dependencies from requirements.txt file
+2. go to main.py file and start it from the terminal
+3. now the server will be started on http://127.0.0.1:5000/
+4. The database file will be in the instance folder its name will be Book_my_show.db
+5. Admin can manage the Venues and currently there are only two admins
+credential of admin : username = Admin1@gmail.com
+                      password = admin
+
+6. now you can register as a new user and access all the shows which are currently made by the admin and you can book as well.
+7. your booked show will be available in bookings page

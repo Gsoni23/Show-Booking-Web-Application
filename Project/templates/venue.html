@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Venue Management{% endblock %}
+
+{% block content %}
+
+{% if editing %}
+<form method = "POST">
+    <h3 align = "center">Editing Venue</h3>
+    <div class = "form-group">
+        <label for = "venue_name">Venue Name</label>
+        <input type = "text" class = "form-control" id = "venue_name" name = "venue_name" value = "{{venue.venue_name}}"/>
+    </div>
+    <div class = "form-group">
+        <label for = "place">Place</label>
+        <input type = "text" class = "form-control" id = "place" name = "place" value = "{{venue.place}}"/>
+    </div>
+    <div class = "form-group">
+        <label for = "capacity">Capacity</label>
+        <input type = "number" class = "form-control" id = "capacity" name = "capacity" value = "{{venue.capacity}}"/>
+    </div>
+    <br />
+    <button type = "submit" class ="btn btn-primary">Submit</button>
+</form>
+{% else %}
+<form method = "POST">
+    <h3 align = "center">Creating a new Venue</h3>
+    <div class = "form-group">
+        <label for = "venue_name">Venue Name</label>
+        <input type = "text" class = "form-control" id = "venue_name" name = "venue_name" placeholder="Enter venue name"/>
+    </div>
+    <div class = "form-group">
+        <label for = "place">Place</label>
+        <input type = "text" class = "form-control" id = "place" name = "place" placeholder="Enter Place"/>
+    </div>
+    <div class = "form-group">
+        <label for = "capacity">Capacity</label>
+        <input type = "number" class = "form-control" id = "capacity" name = "capacity" placeholder="Enter capacity" value="0"/>
+    </div>
+    <br />
+    <button type = "submit" class ="btn btn-primary">Submit</button>
+</form>
+{% endif %}
+{% endblock %}
