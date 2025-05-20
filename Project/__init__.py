@@ -1,9 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 db = SQLAlchemy()
-DB_Name = "Book_my_show.db"
+DB_Name = "Book_my_show.sqlite"
 
 def create_app():
     app = Flask(__name__)
@@ -29,5 +31,12 @@ def create_app():
 
     with app.app_context():
         db.create_all()
+        user = User.query.filter_by(email='admin@gmail.com').first()
+        if user:
+            pass
+        else:
+            first_user = User(email = 'admin@gmail.com', name = 'Admin', password = generate_password_hash('admin', method='scrypt'), isadmin = True)
+            db.session.add(first_user)
+            db.session.commit()
 
     return app 
